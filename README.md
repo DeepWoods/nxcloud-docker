@@ -7,7 +7,7 @@ Container image is based off of Ubuntu:latest minimal with DEB package for NxClo
 
 ### Usage ###
 
-#### Interactive container: ####
+#### Interactive container for testing: ####
 
 ```
 docker run -it --name nxcloud \
@@ -20,7 +20,8 @@ docker run -it --name nxcloud \
 #### Detached container with persistent data volumes: ####
 
 ```
-docker run --rm -d --name nxcloud \
+docker run --rm -dt --name nxcloud \
+  -e TZ=America/Chicago
   -v nxconf:/nxcloud/conf \
   -v nxdb:/nxcloud/db \
   -v nxlog:/nxcloud/log \
