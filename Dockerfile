@@ -1,8 +1,8 @@
 FROM ubuntu:latest
 
 LABEL maintainer="Rob Asher"
-LABEL version="4.6.3.6"
-LABEL release-date="2022-10-21"
+LABEL version="4.6.3.7"
+LABEL release-date="2022-11-08"
 LABEL source="https://github.com/deepwoods/nxcloud-docker"
 
 ENV TZ=${TZ:-Etc/UTC}
