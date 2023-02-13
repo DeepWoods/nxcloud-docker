@@ -1,8 +1,8 @@
 FROM ubuntu:latest
 
 LABEL maintainer="Rob Asher"
-LABEL version="4.6.4.5"
-LABEL release-date="2023-01-04"
+LABEL version="4.6.5.3"
+LABEL release-date="2023-02-13"
 LABEL source="https://github.com/deepwoods/nxcloud-docker"
 
 ENV TZ=${TZ:-Etc/UTC}
@@ -17,6 +17,6 @@ RUN apt -y update && apt -y upgrade \
   && rm -rf /var/lib/apt && rm -rf /var/lib/dpkg && rm -rf /var/lib/cache && rm -rf /var/lib/log \
   && echo "$(curl https://nxfilter.org/curnxc.php)" > /nxcloud/version.txt
 
-EXPOSE 53/udp 80 443 19002 19003 19004
+EXPOSE 53/udp 19004/udp 80 443 19002 19003 19004
 
 CMD ["/nxcloud/bin/startup.sh"]
