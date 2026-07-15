@@ -10,7 +10,7 @@ ENV TZ=${TZ:-Etc/UTC}
 RUN apt -y update && apt -y upgrade \
   && apt -y install --no-install-recommends dnsutils iputils-ping tzdata curl openjdk-11-jre-headless \
   && VERSION=$(curl -s https://nxfilter.org/curnxc.php) \
-  && curl -O "http://nxfilter.org{VERSION}.deb" \
+  && curl -O "http://nxfilter.org/pub/nxcloud-${VERSION}.deb" \
   && apt -y install --no-install-recommends "./nxcloud-${VERSION}.deb" \
   && apt -y clean autoclean \
   && apt -y autoremove \
