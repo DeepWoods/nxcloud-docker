@@ -9,13 +9,13 @@ ENV TZ=${TZ:-Etc/UTC}
 
 RUN apt -y update && apt -y upgrade \
   && apt -y install --no-install-recommends dnsutils iputils-ping tzdata curl openjdk-11-jre-headless \
-  && curl $(printf ' -O http://nxfilter.org/pub/nxcloud-%s.deb' $(curl https://nxfilter.org/curnxc.php)) \
-  && apt -y install --no-install-recommends ./$(printf 'nxcloud-%s.deb' $(curl https://nxfilter.org/curnxc.php)) \
+  && VERSION=$(curl -s https://nxfilter.org/curnxc.php) \
+  && curl -O "http://nxfilter.org{VERSION}.deb" \
+  && apt -y install --no-install-recommends "./nxcloud-${VERSION}.deb" \
   && apt -y clean autoclean \
   && apt -y autoremove \
-  && rm -rf ./$(printf 'nxcloud-%s.deb' $(curl https://nxfilter.org/curnxc.php)) \
-  && rm -rf /var/lib/apt && rm -rf /var/lib/dpkg && rm -rf /var/lib/cache && rm -rf /var/lib/log \
-  && echo "$(curl https://nxfilter.org/curnxc.php)" > /nxcloud/version.txt
+  && rm -rf "./nxcloud-${VERSION}.deb" /var/lib/apt /var/lib/dpkg /var/lib/cache /var/lib/log \
+  && mkdir -p /nxcloud && echo "${VERSION}" > /nxcloud/version.txt
 
 EXPOSE 53/udp 19004/udp 80 443 19002 19003 19004
 
