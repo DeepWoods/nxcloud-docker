@@ -10,7 +10,7 @@ ARG VERSION=4.7.5.2
 ENV TZ=${TZ:-Etc/UTC}
 
 RUN apt -y update && apt -y upgrade \
-  && apt -y install --no-install-recommends dnsutils iputils-ping tzdata ca-certificates curl openjdk-11-jre-headless \
+  && apt -y install --no-install-recommends dnsutils iputils-ping tzdata curl openjdk-11-jre-headless \
   # 2. Download using build argument
   && curl -L -O "http://nxfilter.org/pub/nxcloud-${VERSION}.deb" \
   # 3. Install the package
